@@ -51,4 +51,20 @@ public class POST_createBooking extends BaseSetUp {
 
         System.out.println(userId);
     }
+
+    @Test
+    public void createPartialUser(){
+        userId = given().
+                contentType(ContentType.JSON)
+                .body("{\"name\":\""+partialUser.getName()+"\",\"job\":\"\"}")
+                //body(jsonAsMap)
+                .when()
+                .post("/api/users")
+                .then()
+                .statusCode(201)
+                .assertThat()
+                .body("name",equalTo(partialUser.getName()))
+                .extract()
+                .path("id");
+    }
 }
