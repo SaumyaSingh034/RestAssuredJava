@@ -28,6 +28,5 @@ public class BaseSetUp {
 
         RestAssured.requestSpecification = requestSpecification;
         RestAssured.responseSpecification = responseSpecification;
-
     }
 }
