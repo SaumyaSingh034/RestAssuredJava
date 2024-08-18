@@ -24,4 +24,18 @@ public class GET_ReqresTest extends BaseSetUp {
               .extract().path("data");
       System.out.println(d);
   }
+
+  @Test
+    public void getUnknownUser(){
+      given().get("/api/unknown").then()
+              .statusCode(200).extract()
+              .path("data");
+  }
+
+  @Test
+    public void getUserNotFound(){
+      given().get("/api/users/23")
+              .then()
+              .statusCode(404);
+  }
 }
