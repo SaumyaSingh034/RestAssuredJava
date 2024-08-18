@@ -16,7 +16,7 @@ public class RegisterNewUserBuilder {
 
     public RegisterUser createPartialNewUserRegisteration(){
         return RegisterUser.builder()
-                .email(faker.name().username()+"@gmail.com")
+                .email(faker.name().username()+"@reqres.in")
                 .build();
     }
 }
