@@ -1,10 +1,8 @@
 package tests;
 
 import base.BaseSetUp;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.mapper.ObjectMapper;
-import io.restassured.parsing.Parser;
+import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import requestBuilder.CreateUserBuilder;
@@ -68,6 +66,31 @@ public class POST_createBooking extends BaseSetUp {
                 .body("name",equalTo(partialUser.getName()))
                 .extract()
                 .path("id");
+
+
+
+        
+
+    }
+    
+    @Test
+    public void oAuth_Autherization(){
+        Response response = given().header("authorization","Bearer "+token)
+                .contentType(ContentType.JSON)
+                .formParam("clientId", userId)
+                .queryParam("scope", newUser)
+                .post("/oauth2/authorize")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+
+
+        response.jsonPath().get("token");
+
+        //to get headers
+        response.getHeaders();
+
 
     }
 }
