@@ -3,6 +3,7 @@ package tests;
 import base.BaseSetUp;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.mapper.ObjectMapper;
 import io.restassured.parsing.Parser;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -50,6 +51,7 @@ public class POST_createBooking extends BaseSetUp {
                 .path("id");
 
         System.out.println(userId);
+
     }
 
     @Test
@@ -66,5 +68,6 @@ public class POST_createBooking extends BaseSetUp {
                 .body("name",equalTo(partialUser.getName()))
                 .extract()
                 .path("id");
+
     }
 }
