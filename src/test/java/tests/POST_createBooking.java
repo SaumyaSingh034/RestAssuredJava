@@ -75,7 +75,7 @@ public class POST_createBooking extends BaseSetUp {
                 .post("")
                 .then()
                 .assertThat()
-                .statusCode().extract().response();
+                .statusCode(200).extract().response();
     }
     @Test
     public void oAuth_Autherization(){
