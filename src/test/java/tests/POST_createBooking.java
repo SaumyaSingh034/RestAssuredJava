@@ -67,12 +67,16 @@ public class POST_createBooking extends BaseSetUp {
                 .extract()
                 .path("id");
 
-
-
-        
-
     }
-    
+    @Test
+    public void practicePostRequest(){
+        given().contentType(ContentType.JSON).baseUri("")
+                .body("").when()
+                .post("")
+                .then()
+                .assertThat()
+                .statusCode().extract().response();
+    }
     @Test
     public void oAuth_Autherization(){
         Response response = given().header("authorization","Bearer "+token)
